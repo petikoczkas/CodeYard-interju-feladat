@@ -1,4 +1,4 @@
-package hu.codeyard.android.codeyard.ui.screen
+package hu.codeyard.android.codeyard.ui.screen.list
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
