@@ -18,9 +18,9 @@ data class CodeYardColors(
 
     val colors: Colors = lightColors(
         primary = blue,
-        onPrimary = black,
-        secondary = grayBlue,
-        onSecondary = black,
+        onPrimary = white,
+        secondary = blue,
+        onSecondary = white,
         background = white
     )
 )

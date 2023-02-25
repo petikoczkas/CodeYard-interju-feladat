@@ -70,7 +70,7 @@ fun ListItem() {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun ListItemPreview() {
     CodeYardTheme {
         Column {
             ListItem()
