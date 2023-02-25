@@ -22,7 +22,7 @@ import hu.codeyard.android.codeyard.ui.theme.codeyardDimens
 import hu.codeyard.android.codeyard.ui.theme.codeyardTypography
 
 @Composable
-fun ListItem() {
+fun ListItem(person: String = "") {
     Card(
         elevation = MaterialTheme.codeyardDimens.gapNone,
         modifier = Modifier
@@ -56,7 +56,7 @@ fun ListItem() {
                 CodeYardText(text = "lalalal@gmail.com")
                 CodeYardText(
                     text = "Debrecen, Hal köz 3/A",
-                    textStyle = MaterialTheme.codeyardTypography.cardLocationTextStyle
+                    textStyle = MaterialTheme.codeyardTypography.grayTextStyle
                 )
                 Divider(
                     color = Color.Gray,

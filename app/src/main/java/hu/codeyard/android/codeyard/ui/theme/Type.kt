@@ -23,7 +23,7 @@ data class CodeYardTypography(
     val cardTitleTextStyle: TextStyle = TextStyle(
         fontSize = 20.sp
     ),
-    val cardLocationTextStyle: TextStyle = TextStyle(
+    val grayTextStyle: TextStyle = TextStyle(
         color = Color.Gray
     ),
 )
