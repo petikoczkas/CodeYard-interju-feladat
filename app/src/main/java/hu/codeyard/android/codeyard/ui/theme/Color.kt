@@ -20,7 +20,8 @@ data class CodeYardColors(
         primary = blue,
         onPrimary = black,
         secondary = grayBlue,
-        onSecondary = black
+        onSecondary = black,
+        background = white
     )
 )
 
