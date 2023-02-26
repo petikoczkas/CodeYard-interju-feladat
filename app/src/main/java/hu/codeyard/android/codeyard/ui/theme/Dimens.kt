@@ -19,6 +19,8 @@ data class CodeYardDimens(
     val gapVeryVeryLarge: Dp = 56.dp,
     val gapExtraLarge: Dp = 64.dp,
 
+    val listItemImgSize: Dp = 45.dp,
+    val dividerThickness: Dp = 1.dp,
 
     )
 
