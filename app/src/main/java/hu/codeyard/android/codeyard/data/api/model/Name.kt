@@ -13,6 +13,4 @@ data class Name(
     val first: String,
     @Json(name = "last")
     val last: String,
-    @Json(name = "title")
-    val title: String
 ) : Parcelable

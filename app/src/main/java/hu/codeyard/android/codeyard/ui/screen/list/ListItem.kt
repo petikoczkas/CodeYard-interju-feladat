@@ -11,12 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.rememberAsyncImagePainter
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import hu.codeyard.android.codeyard.data.api.model.Result
 import hu.codeyard.android.codeyard.ui.screen.destinations.DetailScreenDestination
+import hu.codeyard.android.codeyard.ui.theme.codeyardColors
 import hu.codeyard.android.codeyard.ui.theme.codeyardDimens
 import hu.codeyard.android.codeyard.ui.theme.codeyardTypography
 import hu.codeyard.android.codeyard.ui.view.CodeYardText
@@ -31,7 +31,7 @@ fun ListItem(
         modifier = Modifier
             .fillMaxWidth()
             .padding(MaterialTheme.codeyardDimens.gapNormal)
-            .clickable { navigator.navigate(DetailScreenDestination(/*person = person*/)) }
+            .clickable { navigator.navigate(DetailScreenDestination(person = person)) }
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -53,16 +53,16 @@ fun ListItem(
                     .padding(start = MaterialTheme.codeyardDimens.gapNormal)
             ) {
                 CodeYardText(
-                    text = person.name.title + " " + person.name.first + " " + person.name.last,
+                    text = "${person.name.first} ${person.name.last}",
                     textStyle = MaterialTheme.codeyardTypography.cardTitleTextStyle
                 )
                 CodeYardText(text = person.email)
                 CodeYardText(
-                    text = person.location.country + ", " + person.location.city,
+                    text = "${person.location.country}, ${person.location.city}",
                     textStyle = MaterialTheme.codeyardTypography.grayTextStyle
                 )
                 Divider(
-                    color = Color.Gray,
+                    color = MaterialTheme.codeyardColors.grayBlue,
                     thickness = MaterialTheme.codeyardDimens.dividerThickness,
                     modifier = Modifier.padding(top = MaterialTheme.codeyardDimens.gapMedium)
                 )
@@ -70,14 +70,3 @@ fun ListItem(
         }
     }
 }
-
-/*@Preview(showBackground = true)
-@Composable
-fun ListItemPreview() {
-    CodeYardTheme {
-        Column {
-            ListItem()
-            ListItem()
-        }
-    }
-}*/

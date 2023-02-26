@@ -3,6 +3,9 @@ package hu.codeyard.android.codeyard
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Surface
+import androidx.compose.ui.Modifier
 import com.ramcosta.composedestinations.DestinationsNavHost
 import dagger.hilt.android.AndroidEntryPoint
 import hu.codeyard.android.codeyard.ui.screen.NavGraphs
@@ -14,7 +17,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CodeYardTheme {
-                DestinationsNavHost(navGraph = NavGraphs.root)
+                Surface(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    DestinationsNavHost(navGraph = NavGraphs.root)
+                }
             }
         }
     }
