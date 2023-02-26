@@ -1,10 +1,13 @@
 package hu.codeyard.android.codeyard.data.api.model
 
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class Result(
     @Json(name = "cell")
     val cell: String,
@@ -18,4 +21,4 @@ data class Result(
     val phone: String,
     @Json(name = "picture")
     val picture: Picture,
-)
+) : Parcelable

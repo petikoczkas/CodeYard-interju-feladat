@@ -14,12 +14,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import hu.codeyard.android.codeyard.R
 import hu.codeyard.android.codeyard.ui.theme.codeyardDimens
 import hu.codeyard.android.codeyard.ui.theme.codeyardTypography
 
+@RootNavGraph(start = true)
+@Destination
 @Composable
-fun ListScreen(viewModel: ListViewModel = hiltViewModel()) {
+fun ListScreen(
+    navigator: DestinationsNavigator,
+    viewModel: ListViewModel = hiltViewModel()
+) {
 
     val personList by viewModel.people.collectAsState()
 
@@ -32,7 +40,7 @@ fun ListScreen(viewModel: ListViewModel = hiltViewModel()) {
 
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(personList) { p ->
-                ListItem(person = p)
+                ListItem(person = p, navigator = navigator)
             }
         }
 

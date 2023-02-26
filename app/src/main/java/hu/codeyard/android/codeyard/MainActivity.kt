@@ -11,8 +11,9 @@ import androidx.compose.material.icons.rounded.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.ramcosta.composedestinations.DestinationsNavHost
 import dagger.hilt.android.AndroidEntryPoint
-import hu.codeyard.android.codeyard.ui.screen.list.ListScreen
+import hu.codeyard.android.codeyard.ui.screen.NavGraphs
 import hu.codeyard.android.codeyard.ui.theme.CodeYardTheme
 import hu.codeyard.android.codeyard.ui.view.AppBar
 
@@ -42,7 +43,7 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxSize()
                                 .padding(padding)
                         ) {
-                            ListScreen()
+                            DestinationsNavHost(navGraph = NavGraphs.root)
                         }
                     }
                 )

@@ -14,19 +14,24 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.rememberAsyncImagePainter
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import hu.codeyard.android.codeyard.data.api.model.Result
+import hu.codeyard.android.codeyard.ui.screen.destinations.DetailScreenDestination
 import hu.codeyard.android.codeyard.ui.theme.codeyardDimens
 import hu.codeyard.android.codeyard.ui.theme.codeyardTypography
 import hu.codeyard.android.codeyard.ui.view.CodeYardText
 
 @Composable
-fun ListItem(person: Result) {
+fun ListItem(
+    person: Result,
+    navigator: DestinationsNavigator
+) {
     Card(
         elevation = MaterialTheme.codeyardDimens.gapNone,
         modifier = Modifier
             .fillMaxWidth()
             .padding(MaterialTheme.codeyardDimens.gapNormal)
-            .clickable { TODO("Nav to detailscreen") }
+            .clickable { navigator.navigate(DetailScreenDestination(person = person)) }
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
