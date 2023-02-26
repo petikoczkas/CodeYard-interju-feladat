@@ -6,8 +6,8 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Location(
+    @Json(name = "country")
+    val country: String,
     @Json(name = "city")
     val city: String,
-    @Json(name = "street")
-    val street: Street,
 )

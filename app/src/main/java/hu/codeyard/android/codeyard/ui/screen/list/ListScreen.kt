@@ -9,15 +9,20 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import hu.codeyard.android.codeyard.R
 import hu.codeyard.android.codeyard.ui.theme.codeyardDimens
 import hu.codeyard.android.codeyard.ui.theme.codeyardTypography
-import hu.codeyard.android.codeyard.ui.view.ListItem
 
 @Composable
-fun ListScreen(personList: List<String>) {
+fun ListScreen(viewModel: ListViewModel = hiltViewModel()) {
+
+    val personList by viewModel.people.collectAsState()
+
     Column(modifier = Modifier.fillMaxSize()) {
         Text(
             modifier = Modifier.padding(MaterialTheme.codeyardDimens.gapMedium),
@@ -26,8 +31,8 @@ fun ListScreen(personList: List<String>) {
         )
 
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
-            items(personList) { person ->
-                ListItem(person)
+            items(personList) { p ->
+                ListItem(person = p)
             }
         }
 

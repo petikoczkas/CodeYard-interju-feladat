@@ -1,4 +1,4 @@
-package hu.codeyard.android.codeyard.ui.view
+package hu.codeyard.android.codeyard.ui.screen.list
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -13,16 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import hu.codeyard.android.codeyard.R
-import hu.codeyard.android.codeyard.ui.theme.CodeYardTheme
+import coil.compose.rememberAsyncImagePainter
+import hu.codeyard.android.codeyard.data.api.model.Result
 import hu.codeyard.android.codeyard.ui.theme.codeyardDimens
 import hu.codeyard.android.codeyard.ui.theme.codeyardTypography
+import hu.codeyard.android.codeyard.ui.view.CodeYardText
 
 @Composable
-fun ListItem(person: String = "") {
+fun ListItem(person: Result) {
     Card(
         elevation = MaterialTheme.codeyardDimens.gapNone,
         modifier = Modifier
@@ -36,31 +34,31 @@ fun ListItem(person: String = "") {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
+                painter = rememberAsyncImagePainter(person.picture.thumbnail),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .padding(top = MaterialTheme.codeyardDimens.gapMedium)
-                    .size(45.dp)
+                    .size(MaterialTheme.codeyardDimens.listItemImgSize)
                     .clip(CircleShape)
             )
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(start = 20.dp)
+                    .padding(start = MaterialTheme.codeyardDimens.gapNormal)
             ) {
                 CodeYardText(
-                    text = "Sandra Adams",
+                    text = person.name.title + " " + person.name.first + " " + person.name.last,
                     textStyle = MaterialTheme.codeyardTypography.cardTitleTextStyle
                 )
-                CodeYardText(text = "lalalal@gmail.com")
+                CodeYardText(text = person.email)
                 CodeYardText(
-                    text = "Debrecen, Hal köz 3/A",
+                    text = person.location.country + ", " + person.location.city,
                     textStyle = MaterialTheme.codeyardTypography.grayTextStyle
                 )
                 Divider(
                     color = Color.Gray,
-                    thickness = 1.dp,
+                    thickness = MaterialTheme.codeyardDimens.dividerThickness,
                     modifier = Modifier.padding(top = MaterialTheme.codeyardDimens.gapMedium)
                 )
             }
@@ -68,7 +66,7 @@ fun ListItem(person: String = "") {
     }
 }
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun ListItemPreview() {
     CodeYardTheme {
@@ -77,4 +75,4 @@ fun ListItemPreview() {
             ListItem()
         }
     }
-}
+}*/
