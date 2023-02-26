@@ -31,7 +31,7 @@ fun ListItem(
         modifier = Modifier
             .fillMaxWidth()
             .padding(MaterialTheme.codeyardDimens.gapNormal)
-            .clickable { navigator.navigate(DetailScreenDestination(person = person)) }
+            .clickable { navigator.navigate(DetailScreenDestination(/*person = person*/)) }
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),

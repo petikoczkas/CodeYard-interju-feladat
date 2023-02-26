@@ -6,8 +6,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,6 +21,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import hu.codeyard.android.codeyard.R
 import hu.codeyard.android.codeyard.ui.theme.codeyardDimens
 import hu.codeyard.android.codeyard.ui.theme.codeyardTypography
+import hu.codeyard.android.codeyard.ui.view.AppBar
 
 @RootNavGraph(start = true)
 @Destination
@@ -31,18 +33,34 @@ fun ListScreen(
 
     val personList by viewModel.people.collectAsState()
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        Text(
-            modifier = Modifier.padding(MaterialTheme.codeyardDimens.gapMedium),
-            text = stringResource(R.string.today),
-            style = MaterialTheme.codeyardTypography.grayTextStyle
-        )
+    Scaffold(
+        topBar = { AppBar() },
+        floatingActionButton = {
+            FloatingActionButton(onClick = { }) {
+                Icon(Icons.Rounded.Add, contentDescription = null)
+            }
+        },
+        content = { padding ->
+            Surface(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding)
+            ) {
+                Column(modifier = Modifier.fillMaxSize()) {
+                    Text(
+                        modifier = Modifier.padding(MaterialTheme.codeyardDimens.gapMedium),
+                        text = stringResource(R.string.today),
+                        style = MaterialTheme.codeyardTypography.grayTextStyle
+                    )
 
-        LazyColumn(modifier = Modifier.fillMaxWidth()) {
-            items(personList) { p ->
-                ListItem(person = p, navigator = navigator)
+                    LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                        items(personList) { p ->
+                            ListItem(person = p, navigator = navigator)
+                        }
+                    }
+
+                }
             }
         }
-
-    }
+    )
 }
