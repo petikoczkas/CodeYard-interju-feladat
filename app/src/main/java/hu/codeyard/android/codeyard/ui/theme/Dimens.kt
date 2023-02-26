@@ -21,8 +21,11 @@ data class CodeYardDimens(
 
     val listItemImgSize: Dp = 45.dp,
     val dividerThickness: Dp = 1.dp,
+    val detailIconSize: Dp = 40.dp,
+    val detailImgAspectRatio: Float = 16f / 13f,
+    val moreVertIconSize: Dp = 32.dp
 
-    )
+)
 
 val LocalDimens = staticCompositionLocalOf { CodeYardDimens() }
 
