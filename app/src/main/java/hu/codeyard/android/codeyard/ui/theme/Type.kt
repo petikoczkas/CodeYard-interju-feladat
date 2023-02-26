@@ -26,6 +26,10 @@ data class CodeYardTypography(
     val grayTextStyle: TextStyle = TextStyle(
         color = Color.Gray
     ),
+    val detailScreenName: TextStyle = TextStyle(
+        fontSize = 40.sp,
+        color = Color.White,
+    )
 )
 
 val LocalTypography = staticCompositionLocalOf { CodeYardTypography() }
